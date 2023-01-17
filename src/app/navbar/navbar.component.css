@@ -1,0 +1,17 @@
+ nav, .nav-list,p{
+    display: flex;
+    justify-content: space-between;
+    position: relative;
+    top: 5px;
+ }
+ nav{
+    padding: 0 20px 0 20px;
+ }
+ .nav-item{
+    list-style-type: none;
+    margin-left: 30px;
+ }
+ .nav-list,a{
+    text-decoration: none;
+ }
+ 

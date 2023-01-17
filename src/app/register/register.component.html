@@ -1,0 +1,49 @@
+<div class="w-50 m-auto mt-3 shadow p-4">
+    <h4 class="text-center">USER REGISTRATION</h4>
+    <form #register="ngForm" (submit)="registerSubmit(register)">
+        <div class="form-group">
+            <label for="firstname">FIRST NAME</label>
+            <input type="text" class="form-control" placeholder="Enter firstname" [(ngModel)]="firstname"
+                name="firstname" required ngModel #fstname="ngModel"
+                [ngClass]="{'is-invalid':(submitted && fstname.invalid)}" pattern="^[a-z,A-Z]{3,50}$">
+            <div>
+                <span class="text-danger" *ngIf="submitted && fstname.errors?.['required']">Required firstname</span>
+                <span class="text-danger" *ngIf="submitted && fstname.errors?.['pattern']">Invalid firstname</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="lastname">LAST NAME</label>
+            <input type="text" class="form-control" placeholder="Enter lastname" [(ngModel)]="lastname" name="lastname"
+                required ngModel #lstname="ngModel" [ngClass]="{'is-invalid':(submitted && lstname.invalid)}"
+                pattern="^[a-z,A-Z]{3,50}$">
+            <div>
+                <span class="text-danger" *ngIf="submitted && lstname.errors?.['required']">Required lastname</span>
+                <span class="text-danger" *ngIf="submitted && lstname.errors?.['pattern']">Invalid lastname</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="email">EMAIL</label>
+            <input type="text" class="form-control" placeholder="Enter email" [(ngModel)]="email" name="email" required
+                ngModel #eml="ngModel" [ngClass]="{'is-invalid': (submitted && eml.invalid)}"
+                pattern="^[a-z]{5,50}[@]{1}[a-z]{5}[.]{1}[a-z]{2,3}$">
+            <div>
+                <span class="text-danger" *ngIf="submitted && eml.errors?.['required']">Required email</span>
+                <span class="text-danger" *ngIf="submitted && eml.errors?.['pattern']">Invalid email</span>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="password">PASSWORD</label>
+            <input type="text" class="form-control" placeholder="Enter password" [(ngModel)]="password" name="password"
+                required ngModel #psd="ngModel" [ngClass]="{'is-invalid':(submitted && psd.invalid)}"
+                pattern="^[a-z,A_Z]{3,10}[0-9]{2,3}$">
+            <div>
+                <span class="text-danger" *ngIf=" submitted && psd.errors?.['required']">Required password</span>
+                <span class="text-danger" *ngIf="submitted && psd.errors?.['pattern']">Invalid Password</span>
+            </div>
+        </div>
+        <div class="form-group mt-5 text-center">
+            <button type="reset" class="btn btn-warning">Reset</button>
+            <button class="btn btn-primary ms-5">register</button>
+        </div>
+    </form>
+</div>

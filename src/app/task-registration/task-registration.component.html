@@ -1,0 +1,41 @@
+<div class="w-50 m-auto mt-4 shadow bg-info rounded p-4">
+    <h4 class="text-center">REGISTRATION FORM</h4>
+    <form [formGroup]="registerFrom" (submit)="registerSubmit()">
+        <div class="form-group">
+            <label for="firstname">FIRST NAME</label>
+            <input type="text" placeholder="Enter First Name" class="form-control" formControlName="firstname">
+        </div>
+        <div class="form-group">
+            <label for="lastname">LAST NAME</label>
+            <input type="text" placeholder="Enter Last Name" class="form-control" formControlName="lastname">
+        </div>
+        <div class="form-group mt-2">
+            <label for="">GENDER :</label> <span class="ms-2">Male :</span> <input type="radio" class="ms-1"> <span
+                class="ms-2">Fmale : </span> <input type="radio" class="ms-1">
+            <span class="ms-4">DOB : </span> <input type="date" class="ms-1"> <label for="" class="ms-1">AGE :</label>
+            <input type="text" class="w-25 ms-1">
+        </div>
+        <div class="form-group">
+            <label for="address">ADDRESS-1</label>
+            <textarea name="" id="" cols="83" rows="0" placeholder="Enter Your Current Address-1"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="address">ADDRESS-2</label>
+            <textarea name="" id="" cols="83" rows="0" placeholder="Enter Your Perminent Address-2"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="number">PHONE NUMBER :</label>
+            <select>
+                <option value="">+91</option>
+            </select>
+            <input type="text" class="ms-1" placeholder="Enter Your Phone Number"> 
+        </div>
+        <div class="form-group mt-2">
+            <label for="" class="ms-1">PIN CODE :</label> <input type="text" placeholder="Enter pincode" class="ms-1">
+        </div>
+        <div class="form-group text-center mt-4">
+            <button type="reset" class="btn btn-warning">Reset</button>
+            <button class="btn btn-success ms-5">Register</button>
+        </div>
+    </form>
+</div>

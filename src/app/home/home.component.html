@@ -1,0 +1,71 @@
+<div class="w-50 m-auto mt-3 shadow p-4">
+    <h4 class="text-center">STUDENT INFORMATION</h4>
+    <span class="fa fa-search">Search</span>
+    <input type="text" class="ms-2 mb-2" placeholder="Search Student name" [(ngModel)]="Findname">
+    <button class="btn btn-success ms-2 mb-2" (click)="btn='ADD'" data-bs-toggle="modal" data-bs-target="#exampleModal">ADD STUDENT</button>
+    <table class="table table-bordered border-dark">
+        <thead>
+            <tr class="text-center">
+                <th>ID</th>
+                <th>NAME</th>
+                <th>AGE</th>
+                <th>ACTIONS</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="text-center" *ngFor="let student of Students | filter : Findname">
+                <td>{{student.id}}</td>
+                <td>{{student.name}}</td>
+                <td>{{student.age}}</td>
+                <td class="text-center">
+                    <button class="btn btn-danger" (click)="deleteStudent(student)"><i class="fa fa-trash"></i></button>
+                    <button class="btn btn-primary ms-3" (click)="btn='EDIT';editstd(student)" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa fa-pencil"></i></button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <form [formGroup]="stdForm" (submit)="dataSubmit()">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Add Student data</h5>
+                    <button type="button" id="close" (click)="stdForm.reset();" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label for="id">ID</label>
+                        <input type="text" class="form-control" formControlName="id" placeholder="Enter id" [ngClass]="{'is-invalid': submitted && stdForm.controls['id'].invalid}">
+                        <div>
+                            <span class="text-danger" *ngIf="submitted && stdForm.controls['id'].errors?.['required']">Required id</span>
+                            <span class="text-danger" *ngIf="submitted && stdForm.controls['id'].errors?.['pattern']">Id must be in Numbers</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="name">NAME</label>
+                        <input type="text" class="form-control" formControlName="name" placeholder="Enter name" [ngClass]="{'is-invalid': submitted && stdForm.controls['name'].invalid}">
+                        <div>
+                            <span class="text-danger" *ngIf="submitted && stdForm.controls['name'].errors?.['required']">Required name</span>
+                            <span class="text-danger" *ngIf="submitted && stdForm.controls['name'].errors?.['pattern']">Invalid name</span>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="age">AGE</label>
+                        <input type="text" class="form-control" formControlName="age" placeholder="Enter age" [ngClass]="{'is-invalid': submitted && stdForm.controls['age'].invalid}">
+                        <div>
+                            <span class="text-danger" *ngIf="submitted && stdForm.controls['age'].errors?.['required']">Required age</span>
+                            <span class="text-danger" *ngIf="submitted && stdForm.controls['age'].errors?.['pattern']">Age must be in numbers minimum Two digits</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="reset" class="btn btn-warning">Reset</button>
+                    <button class="btn btn-success ms-3">{{btn}}</button>
+                </div>
+            </div>
+        </form>
+    </div>
+</div>
